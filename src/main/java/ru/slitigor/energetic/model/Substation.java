@@ -27,15 +27,5 @@ public class Substation {
     private String sDesc;
     @OneToMany(mappedBy = "substation")
     private Set<SwGear> switchgearList = new HashSet<>();
-//
-//    public void addSwitchgear(Switchgear switchgear) {
-//        if (this.switchgearList.contains(switchgear)) return;
-//        this.switchgearList.add(switchgear);
-//        switchgear.setSubstation(this);
-//    }
-//
-//    public void removeSwitchgear(Switchgear switchgear) {
-//        if (!this.switchgearList.contains(switchgear)) return;
-//        this.switchgearList.remove(switchgear);
-//    }
+
 }

@@ -33,6 +33,7 @@ public class DistrictServiceImpl implements DistrictService {
     }
 
     @Override
+    @Transactional
     public District createDistrict(District district) {
         Optional<District> isExists = repository.findByName(district.getName());
         if (isExists.isPresent()) throw new ItemAlreadyExistsException(String.format(
@@ -43,6 +44,7 @@ public class DistrictServiceImpl implements DistrictService {
     }
 
     @Override
+    @Transactional
     public District updateDistrict(String name, District district) {
         Optional<District> isExists = repository.findByName(name);
         if (isExists.isEmpty()) throw new ResourceNotFoundException("District", "name", name);
@@ -52,6 +54,7 @@ public class DistrictServiceImpl implements DistrictService {
     }
 
     @Override
+    @Transactional
     public void deleteDistrict(String name) {
         repository.delete(getDistrictByName(name));
     }

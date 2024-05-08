@@ -40,6 +40,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
+    @Transactional
     public Address updateAddress(String zip, Address address) {
         Optional<Address> isExists = repository.findByZip(zip);
         if (isExists.isEmpty()) throw new ResourceNotFoundException("Address", "zip", zip);

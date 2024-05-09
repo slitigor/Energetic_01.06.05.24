@@ -35,6 +35,7 @@ public class SwGearServiceImpl implements SwGearService {
     }
 
     @Override
+    @Transactional
     public SwGear createSwGear(SwGear swGear) {
         Optional<SwGear> isExists = repository.findBySgTypeAndVoltageAndSubstation_Id(
                 swGear.getSgType(), swGear.getVoltage(), swGear.getSubstation().getId()
@@ -47,6 +48,7 @@ public class SwGearServiceImpl implements SwGearService {
     }
 
     @Override
+    @Transactional
     public SwGear updateSwGear(Long id, SwGear swGear) {
         Optional<SwGear> isExists = repository.findById(id);
         if (isExists.isEmpty()) throw new ResourceNotFoundException("SwGear", "id", id.toString());
@@ -56,10 +58,17 @@ public class SwGearServiceImpl implements SwGearService {
     }
 
     @Override
-    public void deleteSwGear(Long id) {
-        SwGear swGear = repository.findById(id).orElseThrow(() ->
-                new ResourceNotFoundException("SwGear", "id", id.toString()));
-        repository.delete(swGear);
+    @Transactional
+    public void deleteById(Long id) {
+        repository.deleteById(id);
+    }
+
+    @Override
+    @Transactional
+    public void deleteSwGear(SwGear swGear) {
+        repository.delete(getByTypeVoltageSubstationId(
+                swGear.getSgType(), swGear.getVoltage(), swGear.getSubstation().getId()
+        ));
     }
 
     private void updateLinkSubstation(SwGear swGear) {

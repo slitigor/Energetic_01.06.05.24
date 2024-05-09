@@ -6,6 +6,9 @@ import lombok.Setter;
 import ru.slitigor.energetic.model.enums.SGType;
 import ru.slitigor.energetic.model.enums.Voltage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -24,4 +27,6 @@ public class SwGear {
     @ManyToOne()
     @JoinColumn(name = "substation_id", referencedColumnName = "id", nullable = false)
     private Substation substation;
+    @OneToMany(mappedBy = "swGear")
+    private List<Connection> connectionList = new ArrayList<>();
 }

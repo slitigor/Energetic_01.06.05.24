@@ -57,10 +57,13 @@ public class SubstationServiceImpl implements SubstationService {
 
     @Override
     @Transactional
-    public void deleteSubstation(Integer id) {
-        Substation substation = repository.findById(id).orElseThrow(() ->
-               new ResourceNotFoundException("Substation", "id", id.toString()));
-        repository.delete(substation);
+    public void deleteById(Integer id) {
+        repository.deleteById(id);
+    }
+
+    @Override
+    public void deleteSubstation(Substation substation) {
+        repository.delete(getByNameAndDistrictId(substation.getName(), substation.getDistrict().getId()));
     }
 
     private void updateDistrictLink(Substation substation) {

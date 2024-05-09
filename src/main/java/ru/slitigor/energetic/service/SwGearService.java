@@ -11,5 +11,6 @@ public interface SwGearService {
     List<SwGear> getAllSwGear();
     SwGear createSwGear(SwGear swGear);
     SwGear updateSwGear(Long id, SwGear swGear);
-    void  deleteSwGear(Long id);
+    void deleteById(Long id);
+    void deleteSwGear(SwGear swGear);
 }

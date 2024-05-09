@@ -10,5 +10,6 @@ public interface SubstationService {
     List<Substation> getAllSubstation();
     Substation createSubstation(Substation substation);
     Substation updateSubstation(Integer id, Substation substation);
-    void deleteSubstation(Integer id);
+    void deleteById(Integer id);
+    void deleteSubstation(Substation substation);
 }

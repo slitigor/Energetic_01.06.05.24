@@ -19,7 +19,7 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 public class EquipmentServiceImpl implements EquipmentService {
     private final EquipmentRepository repository;
-    private final ConnectionService service;
+//    private final ConnectionService service;
 
     @Override
     public Equipment getByTypeName(String typeName) {
@@ -39,7 +39,6 @@ public class EquipmentServiceImpl implements EquipmentService {
         if (isExists.isPresent()) throw new ItemAlreadyExistsException(String.format(
                 "The equipment with the type name '%s' already exists!", equipment.getTypeName()
         ));
-        updateLinkConnection(equipment);
         return repository.save(equipment);
     }
 
@@ -49,7 +48,6 @@ public class EquipmentServiceImpl implements EquipmentService {
         Optional<Equipment> isExists = repository.findById(id);
         if (isExists.isEmpty()) throw new ResourceNotFoundException("Equipment", "id", id.toString());
         equipment.setId(id);
-        updateLinkConnection(equipment);
         return repository.save(equipment);
     }
 
@@ -65,9 +63,4 @@ public class EquipmentServiceImpl implements EquipmentService {
         repository.delete(equipment);
     }
 
-    private void updateLinkConnection(Equipment equipment) {
-        for (Connection connection: equipment.getConnectionList()) {
-            connection.addEquipment(equipment);
-        }
-    }
 }

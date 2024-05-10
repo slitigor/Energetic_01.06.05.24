@@ -7,6 +7,7 @@ import ru.slitigor.energetic.model.Connection;
 import ru.slitigor.energetic.model.SwGear;
 import ru.slitigor.energetic.repository.ConnectionRepository;
 import ru.slitigor.energetic.service.ConnectionService;
+import ru.slitigor.energetic.service.EquipmentService;
 import ru.slitigor.energetic.service.SwGearService;
 import ru.slitigor.energetic.utils.ItemAlreadyExistsException;
 import ru.slitigor.energetic.utils.ResourceNotFoundException;
@@ -20,6 +21,7 @@ import java.util.Optional;
 public class ConnectionServiceImpl implements ConnectionService {
     private final ConnectionRepository repository;
     private final SwGearService service;
+//    private final EquipmentService equipmentService;
 
     @Override
     public Connection getByNameSwGearId(String name, Long id) {

@@ -14,5 +14,5 @@ public class EquipmentDto {
     private String voltage;
     private String eDesc;
     private int fixedTs;
-    private Set<ConnectionDto> connectionList = new HashSet<>();
+//    private Set<ConnectionDto> connectionList = new HashSet<>();
 }

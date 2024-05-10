@@ -23,7 +23,7 @@ public class Connection {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sw_gear_id", nullable = false, referencedColumnName = "id")
     private SwGear swGear;
-    @ManyToMany(mappedBy = "connectionList")
+    @ManyToMany(mappedBy = "connectionList", fetch = FetchType.EAGER)
     private Set<Equipment> equipmentList = new HashSet<>();
 
     public void addEquipment(Equipment equipment) {

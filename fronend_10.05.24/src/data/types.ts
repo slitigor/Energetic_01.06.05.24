@@ -55,13 +55,14 @@ export const districtColName = new Map([
 ]);
 
 export interface ISubstation {
+  id?: number;
   name: string;
-  sDesc?: string;
+  sdesc?: string;
   district: IDistrict;
 }
 
 export const substationColName = new Map([
-  // ["id", "ID"],
+  ["id", "ID"],
   ["name", "Называние ПС"],
   // ["psSchema", "Схема ПС"],
   ["district", "РЭС"],

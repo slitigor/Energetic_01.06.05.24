@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import { Separator } from "./ui/separator";
 import DistrictPage from "./district/DistrictPage";
 import AddressPage from "./address/AddressPage";
+import SubstationPage from "./substation/SubstationPage";
 
 const MainContent = () => {
   const [tab, setTab] = useState("main");
@@ -19,12 +20,7 @@ const MainContent = () => {
       )}
       {tab === "district" && <DistrictPage />}
       {tab === "address" && <AddressPage />}
-      {tab === "substation" && (
-        <div>
-          <h2 className="text-[20px] font-medium">Список ПС</h2>
-          <p>Здесь будет отображаться список подстанций</p>
-        </div>
-      )}
+      {tab === "substation" && <SubstationPage />}
       {tab === "equipment" && (
         <div>
           <h2 className="text-[20px] font-medium">Оборудование</h2>

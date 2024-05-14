@@ -43,13 +43,17 @@ const DistrictEditDialog = ({ district }: { district: IDistrict }) => {
   };
 
   const handleSaveClik = () => {
-    if (editDistrict !== undefined && editDistrict.address !== undefined)
+    if (editDistrict.name && editDistrict.address !== undefined) {
       updateDistrict(editDistrict.name, editDistrict);
-    else
+      toast({
+        title: "Изменение",
+        description: "Данные успешно изменены.",
+      });
+    } else
       toast({
         variant: "destructive",
         title: "Ошибка заполнения",
-        description: "Проверьте и заполните поля со звёздочкой",
+        description: "Проверьте заполнение полей",
       });
   };
 

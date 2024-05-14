@@ -17,7 +17,7 @@ import ru.slitigor.energetic.utils.validator.SubstationValidator;
 import java.util.List;
 
 @RestController
-@RequestMapping("/district")
+@RequestMapping("/substation")
 @RequiredArgsConstructor
 @CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5174", "http://localhost:3000"})
 public class SubstationController {

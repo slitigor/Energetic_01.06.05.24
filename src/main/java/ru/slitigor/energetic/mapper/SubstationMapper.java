@@ -15,6 +15,7 @@ public class SubstationMapper {
 
     public Substation convertToSubstation(SubstationDto substationDto) {
         Substation substation = new Substation();
+        substation.setId(substationDto.getId());
         substation.setName(substationDto.getName());
         substation.setSDesc(substationDto.getSDesc());
 //        substation.setPsSchema(PSSchema.getSchemaByVal(substationDto.getPsSchema()));
@@ -26,6 +27,7 @@ public class SubstationMapper {
 
     public SubstationDto convertToSubstationDto(Substation substation) {
         SubstationDto substationDto = new SubstationDto();
+        substationDto.setId(substation.getId());
         substationDto.setName(substation.getName());
         substationDto.setSDesc(substation.getSDesc());
 //        substationDto.setPsSchema(substation.getPsSchema().getValue());

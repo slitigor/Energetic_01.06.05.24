@@ -31,8 +31,13 @@ const DistrictDeleteDialog = ({ name }: { name: string }) => {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Отмена</AlertDialogCancel>
-          <AlertDialogAction onClick={() => deleteDistrict(name)}>
+          <AlertDialogCancel className="border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground">
+            Отмена
+          </AlertDialogCancel>
+          <AlertDialogAction
+            className="border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground px-3 rounded-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            onClick={() => deleteDistrict(name)}
+          >
             Удалить
           </AlertDialogAction>
         </AlertDialogFooter>

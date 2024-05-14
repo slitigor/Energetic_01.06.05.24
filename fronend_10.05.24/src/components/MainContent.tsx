@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Navbar from "./Navbar";
 import { Separator } from "./ui/separator";
+import DistrictPage from "./district/DistrictPage";
+import AddressPage from "./address/AddressPage";
 
 const MainContent = () => {
   const [tab, setTab] = useState("main");
@@ -15,12 +17,8 @@ const MainContent = () => {
           <p>Краткое описание приложения, новости и т.п.</p>
         </div>
       )}
-      {tab === "district" && (
-        <div>
-          <h2 className="text-[20px] font-medium">Список РЭС</h2>
-          <p>Здесь будет отображаться список РЭС</p>
-        </div>
-      )}
+      {tab === "district" && <DistrictPage />}
+      {tab === "address" && <AddressPage />}
       {tab === "substation" && (
         <div>
           <h2 className="text-[20px] font-medium">Список ПС</h2>

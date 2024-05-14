@@ -13,10 +13,11 @@ export const voltageList: string[] = [
   "0.22 кВ",
 ];
 
-export const eTypeList: string[] = [
+export const eClassList: string[] = [
   "Коммутационный аппарат",
   "Преобразователь",
   "Ограничитель перенапряжений",
+  "Вторичное оборудование",
   "Прочее оборудование",
 ];
 
@@ -44,4 +45,9 @@ export interface ISwGear {
   sNumb: number;
   isSec: boolean;
   substation: ISubstation;
+}
+
+export interface IEquipment {
+	eClass: string;
+	
 }

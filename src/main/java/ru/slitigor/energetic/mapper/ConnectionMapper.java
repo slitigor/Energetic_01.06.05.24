@@ -34,7 +34,6 @@ public class ConnectionMapper {
         for (Equipment eModel: model.getEquipmentList()) {
             EquipmentDto equipmentDto = equipmentMapper.convertToDto(eModel);
             dto.getEquipmentList().add(equipmentDto);
-            equipmentDto.getConnectionList().add(dto);
         }
         return dto;
     }

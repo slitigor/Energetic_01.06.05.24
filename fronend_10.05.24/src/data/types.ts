@@ -34,25 +34,57 @@ export interface IAddress {
   street: string;
 }
 
+export const addressColName = new Map([
+  ["zip", "Почтовый индекс"],
+  ["city", "Населённый пункт"],
+  ["street", "Улица, дом"],
+  ["actions", "Действия"],
+]);
+
 export interface IDistrict {
   name: string;
-  dDesc?: string;
+  ddesc?: string;
   address: IAddress;
 }
 
+export const districtColName = new Map([
+  ["name", "Название"],
+  ["ddesc", "Описание"],
+  ["address", "Адрес"],
+  ["actions", "Действия"],
+]);
+
 export interface ISubstation {
   name: string;
-  sDesc: string;
+  sDesc?: string;
   district: IDistrict;
 }
+
+export const substationColName = new Map([
+  // ["id", "ID"],
+  ["name", "Называние ПС"],
+  // ["psSchema", "Схема ПС"],
+  ["district", "РЭС"],
+  ["actions", "Действия"],
+]);
 
 export interface ISwGear {
   sgType: string;
   voltage: string;
-  sNumb: number;
-  isSec: boolean;
+  sNumb?: number;
+  isSec?: boolean;
   substation: ISubstation;
 }
+
+export const switchgearColName = new Map([
+  // ["id", "ID"],
+  ["sgType", "Вид РУ"],
+  ["voltage", "Напряжение"],
+  ["sNumb", "Кол-во систем/секций"],
+  ["isSec", "Секционированная"],
+  ["substation", "Подстанция"],
+  ["actions", "Действия"],
+]);
 
 export interface IEquipment {
   typeName: string;
@@ -62,9 +94,25 @@ export interface IEquipment {
   fixedTs?: number;
 }
 
+export const equipmentColName = new Map([
+  ["typeName", "Тип оборудования"],
+  ["eClass", "Класс оборудования"],
+  ["voltage", "Напряжение"],
+  ["eDesc", "Описание"],
+  ["fixedTs", "Фиксация"],
+  ["actions", "Действия"],
+]);
+
 export interface IConnection {
   name: string;
   dName: string;
   swGear: ISwGear;
   equipmentList?: IEquipment[];
 }
+
+export const connectionColName = new Map([
+  ["name", "Наименование"],
+  ["dName", "Диспетчерское наименование"],
+  ["swGear", "Распредустройство"],
+  ["equipmentList", "Список оборудования"],
+]);

@@ -39,7 +39,7 @@ export const useDistrictStore = create<DistrictStore>()((set, get) => ({
   },
   deleteDistrict: async (n) => {
     const { districtList } = get();
-    const r = await appDB.put(`district/${n}`);
+    const r = await appDB.delete(`district/${n}`);
     if (r.status !== 200) throw new Error("Server Error!");
     set({
       districtList: districtList.filter((dstr) => dstr.name !== n),

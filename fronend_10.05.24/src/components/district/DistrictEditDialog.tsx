@@ -10,7 +10,7 @@ import {
   DialogHeader,
 } from "../ui/dialog";
 import { Button } from "../ui/button";
-import { Pencil, Save } from "lucide-react";
+import { Pencil } from "lucide-react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
@@ -38,7 +38,7 @@ const DistrictEditDialog = ({ district }: { district: IDistrict }) => {
   const hanleChangeAddress = (zip: string) => {
     const addr = addressList.find((a) => a.zip === zip);
     if (addr !== undefined) {
-      setEditDistrict({ ...district, address: addr });
+      setEditDistrict({ ...editDistrict, address: addr });
     }
   };
 
@@ -55,6 +55,8 @@ const DistrictEditDialog = ({ district }: { district: IDistrict }) => {
 
   useEffect(() => {
     getAllAddr();
+    setEditDistrict({ ...editDistrict, address: district.address });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getAllAddr]);
 
   return (
@@ -73,13 +75,16 @@ const DistrictEditDialog = ({ district }: { district: IDistrict }) => {
           <Input value={editDistrict.name} disabled={true} />
           <Label className="text-right">Описание</Label>
           <Textarea
-            value={editDistrict.ddesc}
+            value={editDistrict.ddesc ? editDistrict.ddesc : ""}
             onChange={(e) =>
               setEditDistrict({ ...editDistrict, ddesc: e.target.value })
             }
           />
           <Label className="text-right">Адрес *</Label>
-          <Select onValueChange={(e) => hanleChangeAddress(e)}>
+          <Select
+            onValueChange={(e) => hanleChangeAddress(e)}
+            defaultValue={editDistrict.address.zip}
+          >
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Выбор адреса" />
             </SelectTrigger>
@@ -95,7 +100,7 @@ const DistrictEditDialog = ({ district }: { district: IDistrict }) => {
         <DialogFooter>
           <DialogClose asChild>
             <Button variant={"outline"} onClick={() => handleSaveClik()}>
-              <Save className="w-4 h-4" />
+              Сохранить
             </Button>
           </DialogClose>
         </DialogFooter>
